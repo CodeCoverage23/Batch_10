@@ -2,7 +2,7 @@ package com.assignment_2.basic;
 
 /*
  *5. Write the Java Program to declare the global variables as y
-  *6. Write the java program to print the global variable value as 25.
+ *6. Write the java program to print the global variable value as 25.
 
  */
 
