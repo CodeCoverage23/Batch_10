@@ -24,13 +24,13 @@ public Policy getPolicyDetails() {
 	  sc.nextLine();
 	
 	System.out.println("Enter Policy Name ");
-	String PolicyName = sc.nextLine();
+	String policyName = sc.nextLine();
 	
 	System.out.println("Enter policy Type ");
-	String PolicyType = sc.nextLine();
+	String policyType = sc.nextLine();
 	
 	System.out.println("Enter primium Amount ");
-	double primiumAmount = sc.nextDouble();
+	double premiumAmount = sc.nextDouble();
 	
 	return new Policy(policyId, policyName, policyType,premiumAmount );
 }
@@ -44,7 +44,8 @@ public void displayPolicyDetails() {
 
 	public static void main(String[] args) {
 		
-		 Policy policy = new Policy(0, "", "", 0.0);
+//		 Policy policy = new Policy(0, "", "", 0.0);
+		Policy policy = new Policy();
 		 
 		 policy = policy.getPolicyDetails();
 		 
