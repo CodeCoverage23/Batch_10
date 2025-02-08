@@ -1,5 +1,5 @@
 package com.basic.oops;
 
-public interface Inter {
+public interface Inter1 {
 
 }
