@@ -15,6 +15,10 @@ public static void main(String[] args) {
 		//res[j]= res[i];
 		j++;
 	}
+	
+	for(int i= res.length-1; i>=0;i--) {
+		System.out.println(res[i]);
+	}
 	String temp = new String(res);
 	System.out.println(temp);
 	
