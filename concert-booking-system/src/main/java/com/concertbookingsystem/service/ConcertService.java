@@ -1,5 +1,7 @@
 package com.concertbookingsystem.service;
 
+import java.util.List;
+
 import com.concertbookingsystem.dto.ConcertDetailsDto;
 
 /**
@@ -14,5 +16,12 @@ public interface ConcertService {
 	 * @return The String
 	 */
 	String addConcert(ConcertDetailsDto concertDetailsDto);
+
+	/**
+	 * Returns all the concerts from DB
+	 * 
+	 * @return The list of {@link ConcertDetailsDto}
+	 */
+	List<ConcertDetailsDto> getAllConcerts();
 
 }
