@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,6 +48,20 @@ public class ConcertController {
 		List<ConcertDetailsDto> allConcerts = concertService.getAllConcerts();
 		log.info(EXITED);
 		return allConcerts;
+	}
+
+	/**
+	 * An handler method to get the concert by id
+	 * 
+	 * @param id The Integer value
+	 * @return The response {@link ConcertDetailsDto}
+	 */
+	@GetMapping("/concert/{id}")
+	public ResponseEntity<ConcertDetailsDto> getConcertById(@PathVariable int id) {
+		log.info(ENTERED);
+		ConcertDetailsDto concertById = concertService.getConcertById(id);
+		log.info(EXITED);
+		return ResponseEntity.ok(concertById);
 	}
 
 }

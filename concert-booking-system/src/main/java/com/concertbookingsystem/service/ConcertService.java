@@ -24,4 +24,12 @@ public interface ConcertService {
 	 */
 	List<ConcertDetailsDto> getAllConcerts();
 
+	/**
+	 * Returns DTO associated with ID
+	 * 
+	 * @param id The ID
+	 * @return Response
+	 */
+	ConcertDetailsDto getConcertById(long id);
+
 }
