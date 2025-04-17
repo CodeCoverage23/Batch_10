@@ -70,7 +70,7 @@ public class ConcertController {
 	public ConcertDetailsDto updateConcert(@PathVariable("id") long concertId,
 			@RequestBody ConcertDetailsDto detailsDto) {
 		log.info(ENTERED);
-		ConcertDetailsDto dto = concertService.updateMethod(concertId, detailsDto);
+		ConcertDetailsDto dto = concertService.updateConcert(concertId, detailsDto);
 		log.info(EXITED);
 		return dto;
 	}

@@ -39,7 +39,7 @@ public interface ConcertService {
 	 * @param detailsDto The Request DTO
 	 * @return Concert details DTO response
 	 */
-	ConcertDetailsDto updateMethod(long concertId, ConcertDetailsDto detailsDto);
+	ConcertDetailsDto updateConcert(long concertId, ConcertDetailsDto detailsDto);
 
 	/**
 	 * It will delete the concert associated with the id

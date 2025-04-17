@@ -76,7 +76,7 @@ public class ConcertServiceImpl implements ConcertService {
 	}
 
 	@Override
-	public ConcertDetailsDto updateMethod(long concertId, ConcertDetailsDto detailsDto) {
+	public ConcertDetailsDto updateConcert(long concertId, ConcertDetailsDto detailsDto) {
 		log.info(ENTERED);
 		Optional<ConcertEntity> concert = concertRepository.findById(concertId);
 		if (concert.isEmpty()) {
