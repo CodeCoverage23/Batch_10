@@ -8,9 +8,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -62,6 +64,29 @@ public class ConcertController {
 		ConcertDetailsDto concertById = concertService.getConcertById(id);
 		log.info(EXITED);
 		return ResponseEntity.ok(concertById);
+	}
+
+	@PutMapping("/concert/{id}")
+	public ConcertDetailsDto updateConcert(@PathVariable("id") long concertId,
+			@RequestBody ConcertDetailsDto detailsDto) {
+		log.info(ENTERED);
+		ConcertDetailsDto dto = concertService.updateMethod(concertId, detailsDto);
+		log.info(EXITED);
+		return dto;
+	}
+
+	/**
+	 * An handler method to delete the concert
+	 * 
+	 * @param id The concert id
+	 * @return String response
+	 */
+	@DeleteMapping("/concert/{id}")
+	public ResponseEntity<String> deleteConcertId(@PathVariable long id) {
+		log.info(ENTERED);
+		concertService.deleteConcertId(id);
+		log.info(EXITED);
+		return ResponseEntity.ok("Concert is deleted");
 	}
 
 }

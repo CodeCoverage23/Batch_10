@@ -8,7 +8,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.concertbookingsystem.ConcertBookingSystemApplication;
+
 import com.concertbookingsystem.constant.ConcertConstant;
 import com.concertbookingsystem.dto.ConcertDetailsDto;
 import com.concertbookingsystem.exception.ConcertSystemException;
@@ -25,16 +25,10 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 public class ConcertServiceImpl implements ConcertService {
 
-	private final ConcertBookingSystemApplication concertBookingSystemApplication;
-
 	@Autowired
 	private ConcertRepository concertRepository;
 	@Autowired
 	private ObjectMapper mapper;
-
-	ConcertServiceImpl(ConcertBookingSystemApplication concertBookingSystemApplication) {
-		this.concertBookingSystemApplication = concertBookingSystemApplication;
-	}
 
 	@Override
 	public String addConcert(ConcertDetailsDto concertDetailsDto) {
@@ -69,11 +63,44 @@ public class ConcertServiceImpl implements ConcertService {
 		}
 		ConcertEntity concertEntity = concert.get();
 
+		ConcertDetailsDto concertDetailsDto = constructConcertDto(concertEntity);
+		log.info(EXITED);
+		return concertDetailsDto;
+	}
+
+	private ConcertDetailsDto constructConcertDto(ConcertEntity concertEntity) {
 		ConcertDetailsDto concertDetailsDto = ConcertDetailsDto.builder().id(concertEntity.getId())
 				.concertName(concertEntity.getConcertName()).availableTickets(concertEntity.getAvailableTickets())
 				.concertPrice(concertEntity.getConcertPrice()).build();
-		log.info(EXITED);
 		return concertDetailsDto;
+	}
+
+	@Override
+	public ConcertDetailsDto updateMethod(long concertId, ConcertDetailsDto detailsDto) {
+		log.info(ENTERED);
+		Optional<ConcertEntity> concert = concertRepository.findById(concertId);
+		if (concert.isEmpty()) {
+			log.info(ConcertConstant.NO_CONCERT_AVAILABLE, concertId);
+			throw new ConcertSystemException("Invalid ID, Please provide another Concert id");
+		}
+
+		ConcertEntity concertEntity = concert.get();
+
+		concertEntity.setConcertName(detailsDto.getConcertName());
+		concertEntity.setConcertPrice(detailsDto.getConcertPrice());
+		concertEntity.setAvailableTickets(detailsDto.getAvailableTickets());
+
+		ConcertEntity updatedEntity = concertRepository.save(concertEntity);
+
+		log.info(EXITED);
+		return constructConcertDto(updatedEntity);
+	}
+
+	@Override
+	public void deleteConcertId(long id) {
+		log.info(ENTERED);
+		concertRepository.deleteById(id);
+		log.info(EXITED);
 	}
 
 }

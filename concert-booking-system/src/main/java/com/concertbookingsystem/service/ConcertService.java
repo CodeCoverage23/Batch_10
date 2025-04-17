@@ -32,4 +32,20 @@ public interface ConcertService {
 	 */
 	ConcertDetailsDto getConcertById(long id);
 
+	/**
+	 * Update the concert details into the DB
+	 * 
+	 * @param concertId  The Concert ID
+	 * @param detailsDto The Request DTO
+	 * @return Concert details DTO response
+	 */
+	ConcertDetailsDto updateMethod(long concertId, ConcertDetailsDto detailsDto);
+
+	/**
+	 * It will delete the concert associated with the id
+	 * 
+	 * @param id The concert Id
+	 */
+	void deleteConcertId(long id);
+
 }
