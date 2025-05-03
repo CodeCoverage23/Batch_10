@@ -1,0 +1,23 @@
+package com.shiva.fundamentals;
+
+public class TestImmutableString {
+
+    public static void main(String[] args) {
+        String s="java";//-------1010
+        s.concat(" shiva");//---------1020
+        //concat() method appends the string at the end
+        System.out.println(s);//will print Java because strings are immutable objects
+
+        String password="pwd";
+        password.concat("123");
+
+        System.out.println(password);
+        
+        StringBuilder sb=new StringBuilder("java");
+        sb.append(" shiva");
+        System.out.println(sb);
+
+        //let's say 5 reference using this password ,
+        // now if we changed any in same value then all 5 reference will impacted
+    }
+}

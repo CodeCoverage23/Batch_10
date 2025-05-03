@@ -8,10 +8,10 @@
 		<version>3.4.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.concertbookingsystem</groupId>
-	<artifactId>concert-booking-system</artifactId>
+	<groupId>com.core_collection_IQbyShiva</groupId>
+	<artifactId>core_collection_IQbyShiva</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>concert-booking-system</name>
+	<name>core_collection_IQbyShiva</name>
 	<description>Spring application for concert booking system</description>
 	<url/>
 	<licenses>
